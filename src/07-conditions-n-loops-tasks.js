@@ -27,8 +27,14 @@
  *  21 => 'Fizz'
  *
  */
-function getFizzBuzz(/* num */) {
-  throw new Error('Not implemented');
+function getFizzBuzz(num) {
+  if (num % 5 === 0 && num % 3 === 0) {
+    return 'FizzBuzz';
+  } if (num % 3 === 0) {
+    return 'Fizz';
+  } if (num % 5 === 0) {
+    return 'Buzz';
+  } return num;
 }
 
 
@@ -43,8 +49,14 @@ function getFizzBuzz(/* num */) {
  *   5  => 120
  *   10 => 3628800
  */
-function getFactorial(/* n */) {
-  throw new Error('Not implemented');
+function getFactorial(n) {
+  let fact = 1;
+  // eslint-disable-next-line no-plusplus
+  for (let i = 2; i <= n; i++) {
+    // eslint-disable-next-line no-const-assign
+    fact *= i;
+  }
+  return fact;
 }
 
 
@@ -60,8 +72,13 @@ function getFactorial(/* n */) {
  *   5,10  =>  45 ( = 5+6+7+8+9+10 )
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
-function getSumBetweenNumbers(/* n1, n2 */) {
-  throw new Error('Not implemented');
+function getSumBetweenNumbers(n1, n2) {
+  let sum = 0;
+  // eslint-disable-next-line no-undef, no-plusplus
+  for (let i = n1; i <= n2; i++) {
+    sum += i;
+  }
+  return sum;
 }
 
 
@@ -80,8 +97,25 @@ function getSumBetweenNumbers(/* n1, n2 */) {
  *   10,1,1   =>  false
  *   10,10,10 =>  true
  */
-function isTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isTriangle(a, b, c) {
+  // eslint-disable-next-line no-unused-vars
+  let first = false;
+  // eslint-disable-next-line no-unused-vars
+  let second = false;
+  // eslint-disable-next-line no-unused-vars
+  let third = false;
+  if (a + b > c) {
+    first = true;
+  } if (a + c > b) {
+    second = true;
+  } if (b + c > a) {
+    third = true;
+  }
+
+  if (first === true && second === true && third === true) {
+    return true;
+  }
+  return false;
 }
 
 
@@ -394,8 +428,31 @@ function getMatrixProduct(/* m1, m2 */) {
  *    [    ,   ,    ]]
  *
  */
-function evaluateTicTacToePosition(/* position */) {
-  throw new Error('Not implemented');
+function evaluateTicTacToePosition(position) {
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < 3; i++) {
+    if (position[i][0] === 'X' && position[i][1] === 'X' && position[i][2] === 'X') {
+      return 'X';
+    // eslint-disable-next-line no-else-return
+    } else if (position[0][i] === 'X' && position[1][i] === 'X' && position[2][i] === 'X') {
+      return 'X';
+    } else if (position[0][0] === 'X' && position[1][1] === 'X' && position[2][2] === 'X') {
+      return 'X';
+    } else if (position[0][2] === 'X' && position[1][1] === 'X' && position[2][0] === 'X') {
+      return 'X';
+    } else if (position[i][0] === '0' && position[i][1] === '0' && position[i][2] === '0') {
+      return '0';
+    } else if (position[0][i] === '0' && position[1][i] === '0' && position[2][i] === '0') {
+      return '0';
+    } else if (position[0][0] === '0' && position[1][1] === '0' && position[2][2] === '0') {
+      return '0';
+    } else if (position[0][2] === '0' && position[1][1] === '0' && position[2][0] === '0') {
+      return '0';
+    } else if (i === 2) {
+      return undefined;
+    }
+  }
+  return undefined;
 }
 
 
