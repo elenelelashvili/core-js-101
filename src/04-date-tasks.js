@@ -100,8 +100,17 @@ function timeSpanToString(startDate, endDate) {
  *    Date.UTC(2016,3,5,18, 0) => Math.PI
  *    Date.UTC(2016,3,5,21, 0) => Math.PI/2
  */
-function angleBetweenClockHands(/* date */) {
-  throw new Error('Not implemented');
+function angleBetweenClockHands(date) {
+  const h = 1000 * 60 * 60 * 12;
+  const m = 1000 * 60 * 60;
+  // eslint-disable-next-line no-mixed-operators
+  const hour = (360 * (date % h)) / h;
+  // eslint-disable-next-line no-mixed-operators
+  const minute = (360 * (date % m)) / m;
+  let item = Math.abs(minute - hour);
+  // eslint-disable-next-line no-unused-expressions
+  item > 180 ? (item = 360 - item) : null;
+  return (item * 2 * Math.PI) / 360;
 }
 
 
